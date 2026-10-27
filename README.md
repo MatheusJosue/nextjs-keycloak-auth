@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔐 Next.js + Keycloak Auth
 
-## Getting Started
+> Exemplo de autenticação e autorização em Next.js usando Keycloak como provedor de identidade (OpenID Connect) via NextAuth.
 
-First, run the development server:
+## ✨ Funcionalidades
+
+- **Login com Keycloak** pelo provider do NextAuth
+- **Rotas protegidas:** o dashboard só aparece para usuários autenticados
+- **Sessão tipada** com TypeScript, estendendo os tipos do NextAuth
+- **Cliente HTTP (Axios)** que envia o token de acesso para APIs
+- **Logout** da sessão da aplicação
+
+## 🛠️ Tecnologias
+
+Next.js · React · TypeScript · NextAuth · Keycloak · Axios · Tailwind CSS
+
+## 🧠 Decisões técnicas
+
+- **Keycloak** centraliza usuários, papéis e SSO fora da aplicação. É o mesmo padrão que uso em sistemas do setor financeiro.
+- **NextAuth** cuida do fluxo OAuth/OIDC e da renovação da sessão, mantendo a aplicação desacoplada do provedor.
+- **Cliente HTTP centralizado** para não repetir a lógica de token em cada chamada.
+
+## ▶️ Como rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Crie um `.env.local` com:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+KEYCLOAK_CLIENT_ID=
+KEYCLOAK_CLIENT_SECRET=
+KEYCLOAK_ISSUER=
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Desenvolvido por [Matheus Cerqueira](https://www.linkedin.com/in/matheusxaviercerqueira/)
